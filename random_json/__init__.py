@@ -66,7 +66,6 @@ class Generator(object):
 
 ##-----------------------------------------------------------------------
 
-
 def json ():
     g = Generator()
     return g.json()
@@ -75,4 +74,5 @@ def obj(n = None):
     g = Generator()
     return g.obj(n)
 
-print (repr(obj()))
+##-----------------------------------------------------------------------
+

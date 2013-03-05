@@ -17,22 +17,20 @@ class Generator(object):
             i = 0x7fffffff - i
         return i
 
-    def _small_float (self, pos = True):
-        n = self.integer(not pos)
-        d = self.integer(False)
-        d = 1 if d is 0 else d
-        return float(d)/float(n)
-
-    def float(self):
+    def _small_float (self, pos = True, maxval = None):
         go = True
         while go:
-            base = self._small_float(True)
-            go = abs(base) > 40
+            n = self.integer(not pos)
+            d = self.integer(False)
+            d = 1 if d is 0 else d
+            ret = float(d)/float(n)
+            if maxval is None or abs(ret) < maxval:
+                go = False
+        return ret
 
-        go = True
-        while go: 
-            exp = self._small_float()
-            go = abs(exp) > 40
+    def float(self):
+        base = self._small_float(pos = True, maxval = 40)
+        exp = self._small_float(pos = True, maxval = 40)
         return math.pow(base,exp)
 
     def string(self, n = None):

@@ -24,8 +24,15 @@ class Generator(object):
         return float(d)/float(n)
 
     def float(self):
-        base = self._small_float(True)
-        exp = self._small_float()
+        go = True
+        while go:
+            base = self._small_float(True)
+            go = abs(base) > 40
+
+        go = True
+        while go: 
+            exp = self._small_float()
+            go = abs(exp) > 40
         return math.pow(base,exp)
 
     def string(self, n = None):
@@ -75,4 +82,7 @@ def obj(n = None):
     return g.obj(n)
 
 ##-----------------------------------------------------------------------
+
+if __name__ == "__main__":
+    print obj(10)
 

@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name="random_json",
-      version="0.0.1",
+      version="0.0.2",
       description="Generate random JSON objects for testing purposes",
       author="Maxwell Krohn",
       author_email="themax@gmail.com",
